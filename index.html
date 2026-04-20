@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Crossfade Imágenes</title>
+
+    <style>
+        .cf-container {
+            max-width: 500px;
+            width: 100%;
+            margin: 0 auto;
+            font-family: sans-serif;
+        }
+
+        .cf-stage {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            /* Mantiene 500x500 proporcional */
+            overflow: hidden;
+            background: #000;
+        }
+
+        .cf-stage img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            pointer-events: none;
+        }
+
+        .cf-img1 {
+            opacity: 1;
+            z-index: 1;
+        }
+
+        .cf-img2 {
+            opacity: 0;
+            z-index: 2;
+            transition: opacity 0.05s linear;
+        }
+
+        .cf-controls {
+            margin-top: 12px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .cf-slider {
+            width: 70%;
+            /* Más corto para comodidad */
+            max-width: 320px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="cf-container">
+
+        <div class="cf-stage">
+            <img src="02.jpg" class="cf-img1" alt="Imagen 1">
+            <img src="03.jpg" class="cf-img2" alt="Imagen 2" id="cfImage2">
+        </div>
+
+        <div class="cf-controls">
+            <input type="range" min="0" max="100" value="0" class="cf-slider" id="cfSlider">
+        </div>
+
+    </div>
+
+    <script>
+        (function () {
+            var slider = document.getElementById('cfSlider');
+            var image2 = document.getElementById('cfImage2');
+
+            slider.addEventListener('input', function () {
+                image2.style.opacity = slider.value / 100;
+            });
+        })();
+    </script>
+
+</body>
+
+</html>
