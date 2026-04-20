@@ -19,18 +19,22 @@ crossfade.html: archivo principal del visor
 
 Editar dentro de crossfade.html:
 
-img src="imagen1.jpg"
-img src="imagen2.jpg"
+'''
+<img src="imagen1.jpg">
+<img src="imagen2.jpg">
+'''
 
 Se pueden usar rutas locales o URLs.
 
 ### 2. Integrar con iframe
+'''
 <iframe 
   src="crossfade.html" 
   width="520" 
   height="580" 
   style="border:none;">
 </iframe>
+'''
 
 ## Características técnicas
 Sin dependencias externas
