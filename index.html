@@ -6,8 +6,13 @@
     <title>Crossfade Imágenes</title>
 
     <style>
+
+        body {
+            padding-bottom: 60px;
+            margin: 0;
+        }
+
         .cf-container {
-            max-width: 500px;
             width: 100%;
             margin: 0 auto;
             font-family: sans-serif;
@@ -44,16 +49,45 @@
         }
 
         .cf-controls {
-            margin-top: 12px;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+
             display: flex;
             justify-content: center;
+            padding: 10px 0;
+
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(6px);
         }
 
         .cf-slider {
-            width: 70%;
+            width: 80%;
             /* Más corto para comodidad */
-            max-width: 320px;
+            max-width: 500px;
         }
+
+        .cf-fullscreen-btn {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            z-index: 10;
+            padding: 8px 12px;
+            background: rgba(0, 0, 0, 0.6);
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 13px;
+            backdrop-filter: blur(4px);
+        }
+
+        .cf-fullscreen-btn:hover {
+            opacity: 1;
+        }
+
     </style>
 </head>
 
@@ -62,8 +96,13 @@
     <div class="cf-container">
 
         <div class="cf-stage">
-            <img src="02.jpg" class="cf-img1" alt="Imagen 1">
-            <img src="03.jpg" class="cf-img2" alt="Imagen 2" id="cfImage2">
+            <img src="imagen1.jpg" class="cf-img1" alt="Imagen 1">
+            <img src="imagen2.jpg" class="cf-img2" alt="Imagen 2" id="cfImage2">
+
+            <button id="cfFullscreenBtn" class="cf-fullscreen-btn">
+                ⛶
+            </button>
+
         </div>
 
         <div class="cf-controls">
@@ -81,8 +120,20 @@
                 image2.style.opacity = slider.value / 100;
             });
         })();
+
+        var fsBtn = document.getElementById('cfFullscreenBtn');
+        var container = document.querySelector('.cf-container');
+
+        fsBtn.addEventListener('click', function () {
+            if (!document.fullscreenElement) {
+                container.requestFullscreen();
+            } else {
+                document.exitFullscreen();
+            }
+        });
+
     </script>
 
 </body>
 
-</html>
+</html> 
