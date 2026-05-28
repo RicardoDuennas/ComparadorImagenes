@@ -8,7 +8,7 @@ Control de opacidad de la imagen superior mediante slider
 Rango:
 Izquierda: opacidad 0
 Derecha: opacidad 1
-Tamaño base: 500x500 (responsive)
+Tamaño base recomendado: 600x623 (responsive)
 Integración mediante iframe
 
 ## Estructura
@@ -30,8 +30,8 @@ Se pueden usar rutas locales o URLs.
 ```
 <iframe 
   src="crossfade.html" 
-  width="520" 
-  height="580" 
+  width="600" 
+  height="624" 
   style="border:none;">
 </iframe>
 ```
